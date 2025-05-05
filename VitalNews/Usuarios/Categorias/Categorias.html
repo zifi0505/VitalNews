@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <script src="categorias.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!--Libreria para estilos en los iconos-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Categorías de Salud</title>
+        <link rel="stylesheet" href="categorias.css">
+        
+        <style>
+           /* Pie de página */
+            .footer {
+                text-align: center;
+                padding: 20px;
+                background: linear-gradient(to right, #333, #555);
+                color: white;
+                margin-top: 30px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                animation: fadeIn 1s ease-in-out;
+                position: relative;
+            }
+
+            .footer-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .footer a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                margin: 5px 0;
+                transition: transform 0.3s, color 0.3s;
+            }
+
+            .footer a:hover {
+                color: #00aced; /* Color corporativo hover */
+                transform: scale(1.05);
+            }
+
+            .social-icons-container {
+                display: flex;
+                justify-content: center; /* Asegura que los iconos estén centrados */
+                align-items: center; /* Centra los iconos verticalmente */
+                gap: 10px; /* Espaciado entre los íconos */
+                margin-top: 10px;
+                width: 100%; /* Asegura que ocupe todo el ancho disponible */
+            }
+
+            /* Estilo para los iconos */
+            .social-icons-container a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background-color: #555; /* Fondo de los íconos */
+                color: white;
+                border-radius: 50%;
+                text-decoration: none;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .social-icons-container a:hover {
+                background-color: #007BFF; /* Color de fondo al pasar el mouse */
+                transform: scale(1.1);
+            }
+
+            .social-icons-container i {
+                font-size: 20px; /* Tamaño del ícono */
+            }
+
+            /* Animación de entrada */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+        </style>
+
+        <!--Hasta aqui pie pagina-->
+    </head>
+
+<body>  
+
+    <!-- Barra de navegación inicio-->
+    <nav>
+        <div class="logo">Vital News</div>
+        <ul class="list">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Idioma</a></li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Regístrate</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar...">
+            <button type="submit">🔍</button>
+        </div>
+        <label for="toggle" class="icon-bars">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </label>
+        <input type="checkbox" id="toggle">
+    </nav>
+    <!--Barra nav fin-->
+
+    <div class="fondo"></div> <!-- Fondo fijo -->
+    
+    <div class="contenedor">
+        <header>  
+            <h1>CATEGORÍAS</h1>  
+            <h2>Explora los diferentes temas</h2>  
+        </header>  
+        
+        <main>  
+            <div class="categories">  
+                <a href="noticia.html" class="category">  
+                    <img src="Imagenes/enfermedades.png" alt="Enfermedades">  
+                    <h3>Enfermedades</h3>  
+                </a>  
+                <a href="noticia.html" class="category">  
+                    <img src="Imagenes/buenaalimentacion.png" alt="Buena Alimentación">  
+                    <h3>Buena Alimentación</h3>  
+                </a>  
+                <a href="noticia.html" class="category">  
+                    <img src="Imagenes/medicamentos.png" alt="Medicamentos">  
+                    <h3>Medicamentos</h3>
+                </a>
+            </div>
+          
+            <div class="categories2">
+                <a href="noticia.html" class="category">  
+                    <img src="Imagenes/saludsexual.png" alt="Salud Sexual">  
+                    <h3>Salud Sexual</h3>
+                </a>
+                <a href="noticia.html" class="category">  
+                    <img src="Imagenes/saludmental.png" alt="Salud Mental">  
+                    <h3>Salud Mental</h3>
+                </a>
+                <a href="noticia.html" class="category">  
+                    <img src="imagenes/aptitudfisica.png" alt="Aptitud Física">  
+                    <h3>Aptitud Física</h3>
+                </a>
+            </div>
+        </main>  
+    </div>
+
+<!--Pie pagina-->
+<div class="footer">
+    <p class="footer-title">Vitals News</p>
+    <p>Contactanos</p>
+    <div class="social-icons-container">
+        <!-- Ícono para Gmail -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vitals.news.pi@gmail.com&su=Asunto&body=Cuerpo%20del%20mensaje" target="_blank">
+            <i class="fas fa-envelope"></i>
+        </a>
+        
+        <!-- Ícono para Facebook -->
+        <a href="https://www.facebook.com/share/1DsxG3er3o/" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
