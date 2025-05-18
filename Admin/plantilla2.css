@@ -1,0 +1,162 @@
+/*Barra de navegacion estilos inicia aqui*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(214, 214, 222, 0.667);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav .logo {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+nav .list {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaciado entre elementos */
+}
+
+nav .list li {
+    list-style: none; /* Quita los puntos de la lista */
+}
+
+nav .list a {
+    text-transform: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav .list a:hover {
+    border-bottom: 3px solid rgb(107, 193, 213);
+}
+
+/* Ocultar el checkbox del menú */
+#toggle {
+    display: none;
+}
+
+/* Menú hamburguesa */
+nav .icon-bars {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+nav .icon-bars .line {
+    width: 30px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 150px;
+    font-size: 14px;
+}
+
+.search-box button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Ajuste de la barra de búsqueda en la navegación */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .search-box {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    nav .list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #007a;
+        padding: 10px 0;
+    }
+
+    nav .list a {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav .icon-bars {
+        display: block;
+    }
+
+    nav input[type="checkbox"]:checked + .list {
+        display: flex;
+    }
+
+    nav .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav .search-box input {
+        width: 80%;
+    }
+}
+
+/* Responsive: Ajustar en móviles */
+@media screen and (max-width: 768px) {
+    nav .search-box {
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0;
+    }
+
+    nav .search-box input {
+        width: 80%;
+    }
+}
+
+
+/*Barra navegacion aqui finaliza*/

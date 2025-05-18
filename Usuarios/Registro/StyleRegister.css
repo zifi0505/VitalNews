@@ -1,0 +1,187 @@
+/* styles.css */
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    background-image: url("fondo2.0.jpg");
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.brand {
+    color: rgb(34, 105, 105);
+    font-size: 8vh;
+    margin: 0;
+    margin-bottom: -7vh;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0px 14px rgb(134, 134, 134);
+    z-index: 1
+}
+
+.container {
+    background-color: rgba(227, 227, 227, 0.6);
+    border-radius: 2vh;  
+    padding: 30px;  
+    width: 400px;  
+    text-align: center;  
+    color: #000000;  
+    box-shadow: 0 0 5vh rgba(0, 0, 0, 0.5);  
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-picture {
+    position: relative;
+    width: 15vh;
+    height: 15vh;
+    margin: 0 auto 1rem;
+    cursor: pointer;
+}
+
+#placeholderText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 14px;
+    text-align: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#profileImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ccc;
+    z-index: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;  
+    margin-top: 5vh;
+    padding: 14px;  
+    background-color: #56a3ca;  
+    color: rgb(255, 255, 255);  
+    border: none;  
+    border-radius: 1vh;  
+    cursor: pointer;  
+    font-size: 16px;  
+    font-weight: bold;  
+    transition: all 0.3s ease;  
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out 0.1s;
+    max-width: 90%;
+    width: 300px;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content button {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-content button:first-child {
+    background-color: #56a3ca;
+    color: white;
+}
+
+.modal-content button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.modal-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button:first-child:hover {
+    background-color: #4a8db3;
+}
+
+.modal-content button:last-child:hover {
+    background-color: #d32f2f;
+}

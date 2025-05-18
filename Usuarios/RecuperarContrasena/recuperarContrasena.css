@@ -1,0 +1,126 @@
+body.bg {
+    background-image: url('fondo.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeInBg 1.5s;
+}
+
+@keyframes fadeInBg {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 10px;
+    padding: 32px 32px 16px 32px;
+    width: 400px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+    animation: slideDown 1s;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.login-form h2 {
+    margin-bottom: 25px;
+    color: rgb(0, 247, 255);
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px #000;
+    animation: fadeInTitle 1.2s;
+}
+
+@keyframes fadeInTitle {
+    from { opacity: 0; transform: scale(0.95);}
+    to { opacity: 1; transform: scale(1);}
+}
+
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.form-group label i {
+    margin-right: 6px;
+    color: rgb(0, 247, 255);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    outline: none;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 8px #00eaff;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,247,255,0.15);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    transform: scale(1.04);
+}
+
+.register {
+    margin-top: 18px;
+    font-size: 15px;
+}
+
+.register a {
+    color: #00eaff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.register a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #00eaff;
+}
+
+.copyright {
+    margin-top: 28px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    opacity: 0.7;
+}

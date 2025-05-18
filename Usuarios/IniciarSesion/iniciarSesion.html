@@ -1,0 +1,112 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>ODS ADMINISTRACION</title>  
+        <script src="../../auto-translate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="Iniciar_Sesion.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+</head>  
+<body class="bg">  
+    <div class="login-container">  
+        <div class="login-form">  
+            <h2 data-translate>INICIO DE SESION</h2>  
+            <form id="loginForm" action="iniciarSesionPHP.php" method="post">  
+                <div class="form-group">  
+                    <label for="username">  
+                        <i class="fas fa-user"></i>
+                        <span data-translate>Usuario</span>
+                    </label>  
+                    <input class="traducible-placeholder" type="text" id="username" name="username" placeholder="Nombre de usuario" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="password">  
+                        <i class="fas fa-lock"></i>
+                        <span data-translate>Clave de seguridad</span>
+                    </label>  
+                    <div class="password-container">
+                        <input class="traducible-placeholder" type="password" id="password" name="password" placeholder="Contraseña" required minlength="10" pattern="^\S{10,}$" title="Mínimo 10 caracteres, sin espacios">
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+                    </div>
+                </div>  
+                <div class="remember-forgot">  
+                    <a data-translate href="../RecuperarContrasena/recuperarContrasena.html">Recuperar Contraseña</a>
+                    <label>
+                        <input class="traducible-placeholder" type="checkbox" name="remember">
+                        <span data-translate>Recordar contraseña</span>
+                    </label>
+                </div>  
+                <button data-translate type="button" onclick="validarInicioSesion()">Entrar</button>  
+                <div class="register">  
+                    <span data-translate>¿No tiene cuenta?</span>
+                    <a href="../Registro/registro.html" data-translate>Registrar</a>
+                </div>  
+                <div class="lobby">  
+                    <span data-translate>¿Quiere regresar al</span>
+                    <a href="../Inicio/indexUsuarios.php" data-translate data-force-en="Home">Inicio?</a>
+                </div>
+
+                <button id="translateBtn" style="background-color: transparent; border: none; color: white; cursor: pointer; font: inherit;">
+                    <li data-translate>Idioma</li>
+                </button>
+
+                <div class="copyright">  
+                    &copy; ODS3 Proyecto Integrador Equipo 1 FIE 2025  
+                </div>  
+            </form>  
+        </div>  
+    </div>  
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const icon = document.querySelector(".toggle-password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        function t(text) {
+            if (typeof window.translate === "function") {
+                return window.translate(text);
+            }
+            return text;
+        }
+
+        function validarInicioSesion() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                Swal.fire(t("Faltan campos"), t("Por favor completa todos los campos."), "warning");
+                return;
+            }
+
+            // Enviar formulario si todo está completo
+            document.getElementById("loginForm").submit();
+        }
+
+        // Mostrar alertas según parámetro en la URL
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const success = urlParams.get('success');
+
+            if (error === 'usuario') {
+                Swal.fire(t("Usuario no encontrado"), t("Verifica el nombre de usuario."), "error");
+            } else if (error === 'contrasena') {
+                Swal.fire(t("Contraseña incorrecta"), t("Verifica tu clave de seguridad."), "error");
+            } else if (success === '1') {
+                Swal.fire(t("¡Bienvenido!"), t("Inicio de sesión exitoso."), "success");
+            }
+        };
+    </script>
+</body>  
+</html>

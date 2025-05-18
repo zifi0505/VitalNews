@@ -1,0 +1,126 @@
+/*Barra nav inicio*/
+nav {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(250, 250, 250, 0.667);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+
+nav .logo {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+nav .list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav .list li {
+    list-style: none;
+}
+
+nav .list a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav .list a:hover {
+    border-bottom: 3px solid rgb(107, 193, 213);
+}
+
+#toggle {
+    display: none;
+}
+
+nav .icon-bars {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+nav .icon-bars .line {
+    width: 30px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+nav .search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+nav .search-box input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 150px;
+    font-size: 14px;
+}
+
+nav .search-box button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    nav .list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #007a;
+        padding: 10px 0;
+    }
+
+    nav .list a {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav .icon-bars {
+        display: block;
+    }
+
+    nav input[type="checkbox"]:checked + .list {
+        display: flex;
+    }
+
+    nav .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav .search-box input {
+        width: 80%;
+    }
+}
+/*Barra nav fin*/

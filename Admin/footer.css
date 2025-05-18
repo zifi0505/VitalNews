@@ -1,0 +1,83 @@
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #333, #555);
+    color: white;
+    margin-top: auto; /* Empuja el footer al final */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+    position: relative;
+}
+
+.footer-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: white;
+}
+
+.footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer a:hover {
+    color: #00aced; /* Color corporativo hover */
+    transform: scale(1.05);
+}
+
+.social-icons-container {
+    display: flex;
+    justify-content: center; /* Asegura que los iconos estén centrados */
+    align-items: center; /* Centra los iconos verticalmente */
+    gap: 10px; /* Espaciado entre los íconos */
+    margin-top: 10px;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+/* Estilo para los iconos */
+.social-icons-container a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #555; /* Fondo de los íconos */
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icons-container a:hover {
+    background-color: #007BFF; /* Color de fondo al pasar el mouse */
+    transform: scale(1.1);
+}
+
+.social-icons-container i {
+    font-size: 20px; /* Tamaño del ícono */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.sinsubrayadoa{
+      text-decoration: none; 
+}

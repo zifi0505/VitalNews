@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate>Recuperar Contraseña</title>
+  <link rel="stylesheet" href="recuperarContrasena.css">
+  <script src="../../auto-translate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg">
+  <div class="login-container">
+    <div class="login-form">
+      <h2 data-translate><i class="fas fa-unlock-alt"></i> RECUPERAR CONTRASEÑA</h2>
+      <form id="recuperarForm" action="enviarToken.php" method="post" autocomplete="off">
+        <div class="form-group">
+          <label for="correo"><i class="fas fa-envelope"></i> <span data-translate>Correo Electrónico</span></label>
+          <input class="traducible-placeholder" type="email" id="correo" name="correo" data-translate data-force-en="Example@email.com" placeholder="Ejemplo@correo.com" required>
+        </div>
+        <button data-translate type="button" onclick="validarRecuperar()">Enviar enlace de recuperación</button>
+        <div class="register">
+          <span data-translate>¿Ya tiene cuenta?</span>
+          <a href="../IniciarSesion/iniciarSesion.html" id="loginLink" data-translate>Iniciar Sesión</a>
+        </div>
+        <div class="lobby">
+          <span data-translate>¿Quiere regresar al</span>
+          <a href="../Inicio/indexUsuarios.php" id="homeLink" data-translate data-force-en="Home">Inicio?</a>
+        </div>
+        <!-- Botón de idioma como en Registro: solo texto, no botón visual -->
+        <div id="translateBtn" style="background-color: transparent; border: none; color: white; cursor: pointer; font: inherit; text-align:center; margin-top:10px;">
+          <li data-translate>Idioma</li>
+        </div>
+        <div class="copyright">
+          &copy; ODS3 Proyecto Integrador Equipo 1 FIE 2025
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function t(text) {
+      if (typeof window.translate === "function") {
+        return window.translate(text);
+      }
+      return text;
+    }
+
+    function validarRecuperar() {
+      const correo = document.getElementById('correo').value.trim();
+      if (!correo) {
+        Swal.fire(t("Campo vacío"), t("Por favor ingresa tu correo electrónico."), "warning");
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(correo)) {
+        Swal.fire(t("Correo inválido"), t("Introduce un correo electrónico válido (ej. ejemplo@dominio.com)."), "error");
+        return;
+      }
+      Swal.fire({
+        title: t("¿Enviar enlace de recuperación?"),
+        text: t("Se enviará un enlace a tu correo si está registrado."),
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: t("Enviar"),
+        cancelButtonText: t("Cancelar"),
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById("recuperarForm").submit();
+        }
+      });
+    }
+
+    // Mensaje de éxito/error por parámetros en la URL
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === '1') {
+        Swal.fire({
+          icon: 'success',
+          title: t('¡Enlace enviado!'),
+          text: t('Revisa tu correo electrónico para continuar.'),
+          confirmButtonText: t('Listo')
+        }).then(() => {
+          window.location.href = "../IniciarSesion/iniciarSesion.html";
+        });
+      }
+      if (urlParams.get('error') === '1') {
+        Swal.fire({
+          icon: 'error',
+          title: t('Correo no encontrado'),
+          text: t('El correo ingresado no está registrado.'),
+          confirmButtonText: t('Intentar de nuevo')
+        });
+      }
+    };
+  </script>
+</body>
+</html>

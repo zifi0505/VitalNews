@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate>Cambiar Contraseña</title>
+  <link rel="stylesheet" href="recuperarContrasena.css">
+  <script src="../../auto-translate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .password-container input {
+      width: 100%;
+      padding: 12px;
+      padding-right: 40px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      outline: none;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .password-container .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg">
+  <div class="login-container">
+    <div class="login-form">
+      <h2 data-translate><i class="fas fa-key"></i> NUEVA CONTRASEÑA</h2>
+      <form id="cambiarForm" action="actualizarContrasena.php" method="post" autocomplete="off">
+        <input type="hidden" name="token" id="token" value="">
+        <div class="form-group">
+          <label for="nuevaContrasena"><i class="fas fa-lock"></i> <span data-translate>Nueva contraseña</span></label>
+          <div class="password-container">
+            <input class="traducible-placeholder" type="password" name="nuevaContrasena" id="nuevaContrasena" placeholder="Nueva contraseña" required minlength="10" pattern="^\S{10,}$" title="Mínimo 10 caracteres, sin espacios">
+            <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+          </div>
+        </div>
+        <button data-translate type="button" onclick="validarCambio()">Actualizar</button>
+        <div class="register">
+          <span data-translate>¿Ya tiene cuenta?</span>
+          <a href="../IniciarSesion/iniciarSesion.html" data-translate>Iniciar Sesión</a>
+        </div>
+        <div class="lobby">
+          <span data-translate>¿Quiere regresar al</span>
+          <a href="../IniciarSesion/iniciarSesion.html" data-translate data-force-en="Home">Inicio?</a>
+        </div>
+        <div id="translateBtn" style="background-color: transparent; border: none; color: white; cursor: pointer; font: inherit; text-align:center; margin-top:10px;">
+          <li data-translate>Idioma</li>
+        </div>
+        <div class="copyright">
+          &copy; ODS3 Proyecto Integrador Equipo 1 FIE 2025
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function t(text) {
+      if (typeof window.translate === "function") {
+        return window.translate(text);
+      }
+      return text;
+    }
+
+    // Inserta el token del parámetro GET en el campo oculto
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      if (token) {
+        document.getElementById('token').value = token;
+      }
+
+      // Mostrar alerta según resultado de actualización
+      if (params.get('success') === '1') {
+        Swal.fire({
+          icon: 'success',
+          title: t('¡Contraseña actualizada!'),
+          text: t('Tu contraseña ha sido cambiada correctamente.'),
+          confirmButtonText: t('Listo')
+        }).then(() => {
+          window.location.href = "../IniciarSesion/iniciarSesion.html"; 
+        });
+      }
+      if (params.get('error') === '1') {
+        Swal.fire({
+          icon: 'error',
+          title: t('Token inválido o expirado'),
+          text: t('El enlace de recuperación no es válido o ya expiró.'),
+          confirmButtonText: t('Intentar de nuevo')
+        }).then(() => {
+          // Limpia el parámetro error de la URL
+          const url = new URL(window.location);
+          url.searchParams.delete('error');
+          window.history.replaceState({}, document.title, url.pathname);
+        });
+      }
+    };
+
+    function togglePassword() {
+      const passwordInput = document.getElementById("nuevaContrasena");
+      const icon = document.querySelector(".toggle-password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
+
+    function validarCambio() {
+      const password = document.getElementById('nuevaContrasena').value;
+      if (!password) {
+        Swal.fire(t("Campo vacío"), t("Por favor ingresa tu nueva contraseña."), "warning");
+        return;
+      }
+      if (password.length < 10 || /\s/.test(password)) {
+        Swal.fire(t("Contraseña inválida"), t("Debe tener al menos 10 caracteres y no contener espacios."), "error");
+        return;
+      }
+      Swal.fire({
+        title: t("¿Actualizar contraseña?"),
+        text: t("¿Deseas cambiar tu contraseña?"),
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: t("Actualizar"),
+        cancelButtonText: t("Cancelar"),
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById("cambiarForm").submit();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

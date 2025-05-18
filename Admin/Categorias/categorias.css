@@ -1,0 +1,336 @@
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;
+}  
+
+body {  
+    overflow-y: auto; /* Permite el scroll vertical */
+    height: 100vh;
+    position: relative;
+
+
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+
+}
+
+.fondo {
+    position: fixed;  /* Fondo fijo para que no se corte al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Imagenes/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Envía el fondo detrás del contenido */
+}
+
+.fondo::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(50px);
+    opacity: 1;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 80%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 80%);
+}
+
+.contenedor {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px; 
+}
+
+header {  
+    text-align: center;  
+    position: relative;
+    background-image: url('../Imagenes/fondoSuperior.jpg');
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat;
+    height: 250px;  
+    color: white;
+    padding: 90px 0;
+    z-index: 1;
+}
+
+/* Efecto de desvanecimiento en el header */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;  
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 0;
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+header h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);  
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);  
+}
+
+/* Espaciado entre categorías */
+.categories, .categories2 {  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 30px; /* Espaciado entre las categorías */
+    margin: 20px auto; /* Centrado horizontal */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+}  
+
+/* Estilo para las filas de categorías */
+.categories-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaciado entre columnas */
+    margin-bottom: 20px; /* Espaciado entre filas */
+}
+
+/* Estilo para las categorías individuales */
+.category {
+    flex: 1 1 calc(33.33% - 30px); /* Cada categoría ocupa un tercio del ancho */
+    max-width: 300px; /* Ancho máximo para las categorías */
+    text-align: center;
+    margin: 10px;  
+    text-decoration: none;  
+    color: #333;  
+    transition: transform 0.2s, box-shadow 0.3s ease;  
+}  
+
+.category img {  
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease; /* Transición para el efecto de brillo */
+}
+
+.category:hover {  
+    transform: none; /* Cambia scale(1.10) a none */
+}
+
+/* Efecto de brillo en hover */
+.category:hover img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h3 {  
+    margin-top: 10px;  
+    font-family: 'Arial', sans-serif;  
+    font-size: 1.5rem;  
+    font-weight: bold;  
+    text-transform: uppercase;  
+    color: rgba(255, 255, 255, 0.85);  
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
+    letter-spacing: 1px;  
+    transition: color 0.3s ease;  
+}
+
+.category:hover h3 {
+    color: #fbfeff;  
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+/* Efecto de brillo en texto de hover */
+.category:hover h3 {
+    text-shadow:
+     0 0 5px rgb(57, 57, 255),
+     0 0 10px rgb(57, 57, 255),
+     0 0 20px rgb(57, 57, 255),
+     0 0 40px rgb(57, 57, 255),
+     0 0 80px rgb(57, 57, 255);  
+}
+
+/*Elimina el subrayado de los enlaces*/
+.category a {
+    text-decoration: none; /* Quita el subrayado */
+}
+
+/*Barra nav inicio*/
+nav {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #007a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+
+nav .logo {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+nav .list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav .list li {
+    list-style: none;
+}
+
+nav .list a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav .list a:hover {
+    border-bottom: 3px solid rgb(107, 193, 213);
+}
+
+#toggle {
+    display: none;
+}
+
+nav .icon-bars {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+nav .icon-bars .line {
+    width: 30px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+nav .search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+nav .search-box input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 1000px;
+    font-size: 14px;
+}
+
+nav .search-box button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    nav .list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #007a;
+        padding: 10px 0;
+    }
+
+    nav .list a {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav .icon-bars {
+        display: block;
+    }
+
+    nav input[type="checkbox"]:checked + .list {
+        display: flex;
+    }
+
+    nav .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav .search-box input {
+        width: 80%;
+    }
+}
+/*Barra nav fin*/
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.actions .btn-editar {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición para el sombreado */
+}
+
+.actions .btn-editar:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra al pasar el cursor */
+}
+
+/* Colores específicos para cada botón */
+.actions .btn-ver {
+    background-color: #28a745;
+}
+
+.actions .btn-adit{
+    background-color: #007bff;
+}
+
+.actions .btn-archivar {
+    background-color: #ffc107;
+}
+
+.actions .btn-eliminar {
+    background-color: #dc3545;
+}
